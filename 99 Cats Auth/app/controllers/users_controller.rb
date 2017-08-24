@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(user_params)
+    @user = User.new
   end
 
   def user_params

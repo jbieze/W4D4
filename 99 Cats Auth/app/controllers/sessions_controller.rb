@@ -1,24 +1,25 @@
-class SessionsController < ActionController
+class SessionsController < ApplicationController
 
   def new
     render :new
   end
 
   def create
-    @user = User.find_by_credentials(user_params[:user_name], user_params[:password])
+    @user = User.
+    entials(user_params[:user_name], user_params[:password])
 
     if user.nil?
-      flash.now[:errors] = ['WRONG! nice try, hacker']
+      flash.now[:errors] = ['INCORRECT. Please remain where you are, and wait to be arrested by the Cyber Police.']
       render :new
     else
-      login!(@user)
-      redirect_to user_url(@user)
+      @user.reset_session_token!
+      session[:session_token] = @user.session_token
+      redirect_to cats_url
     end
   end
 
-  #
   # def destroy
+  #
   # end
-
 
 end

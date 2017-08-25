@@ -1,12 +1,16 @@
-<h1>New User</h1>
+<h1>Sign on up and see some cats!!!1!</h1>
 
-<form action="users_url" method="post">
+<%= render 'shared/errors' %>
+
+<form action="<%= users_url %>"    method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <label for="user_name">Username</label>
-  <input type="text" name="user[user_name]" id="user_name" value="">
+  <input type="text" name="user[user_name]" id="user_name" value="<%= @user.user_name %>">
+
 
   <label for="password" name="user[password]", id="password">Password</label>
-  <input type="password" name="user[password]" value="">
+  <input type="password" name="user[password]" value="<%= @user.password%>">
 
   <% submit_text ="Create user" %>
   <input type="submit" value="<%= submit_text %>">

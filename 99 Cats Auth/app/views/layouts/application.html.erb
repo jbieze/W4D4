@@ -7,7 +7,15 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+<header>
+  <% if current_user %>
+    <h1>Welcome, <%= current_user[:user_name] %> </h1>
+    <button type="button" name="logout_user" value="logout_user">Log out :(</button>
+  <% else %>
 
+    <button type="button" name="login_user" value="login_user">Login</button>
+  <% end %>
+</header>
   <body>
     <%= yield %>
   </body>
